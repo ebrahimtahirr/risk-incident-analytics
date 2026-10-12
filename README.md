@@ -1,35 +1,72 @@
-# M.Ebrahim Tahir Awan — Analytics & AI Portfolio
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+  <img src="assets/banner-light.svg" alt="12,000 incidents, one dashboard" width="100%">
+</picture>
 
-Welcome to my portfolio of data-driven projects built at the intersection of **analytics**, **AI**, and **strategy**.
+<p>
+<a href="https://portfolio-ebrahimtahirawan-grckguancn6wgnkv2asvvi.streamlit.app/">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/btn-live-app-dark.svg">
+  <img height="48" src="assets/btn-live-app-light.svg" alt="Open the live app">
+</picture>
+</a>
+&nbsp;
+<a href="https://ebrahimtahirr.github.io/ap-agent-site/">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/btn-ap-case-study-dark.svg">
+  <img height="48" src="assets/btn-ap-case-study-light.svg" alt="View the AP case study">
+</picture>
+</a>
+</p>
 
----
+<sub>Live app: <a href="https://portfolio-ebrahimtahirawan-grckguancn6wgnkv2asvvi.streamlit.app/">https://portfolio-ebrahimtahirawan-grckguancn6wgnkv2asvvi.streamlit.app/</a> (free hosting: if it shows "gone to sleep", click the wake button and give it a minute).</sub>
 
-### 🌐 Live Projects
-| Project | Description | Live Demo |
-|----------|--------------|-----------|
-| 📊 **Customer Churn Prediction Dashboard** | Predicts telecom churn using ML with real-time dashboards and actionable insights. | [View App](https://ebrahimtahirr-customer-churn-dashboard.hf.space) |
-| ⚙️ Risk and Incident Analytics Dashboard | Tracks operational incidents, highlights SLA breach patterns, identifies root causes, and quantifies financial impact using interactive visualizations. | [View App](https://portfolio-ebrahimtahirawan-grckguancn6wgnkv2asvvi.streamlit.app/) |
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">
+  <img src="assets/stats-light.svg" alt="12,000 incidents from July 2023 to December 2024, 22.2% SLA breach rate, $49.2 million financial impact, 14.6% repeat incidents" width="100%">
+</picture>
 
----
+## Problem
 
-### 🧰 Tools & Skills
-| Category | Tools |
-|-----------|-------|
-| Data | Python, Pandas, NumPy, SQL |
-| ML & AI | scikit-learn, Logistic Regression, NLP |
-| Visualization | Streamlit, Matplotlib, Seaborn |
-| Business Analytics | Lean Six Sigma, Process Optimization |
+Operations teams collect thousands of incident tickets but struggle to see where incidents occur, what drives SLA breaches, which systems are unstable and where the money is lost. This dashboard turns a 12,000-row incident log into clear KPIs, root-cause views and a financial exposure summary.
 
----
+## Approach
 
-### 🧑‍💼 About Me
-I’m Ebrahim Tahir, a Business Analytics student at Arizona State University who’s passionate about using data and AI to make businesses work smarter. I like finding ways to connect analytics and strategy — building tools that improve efficiency, cut out repetitive work, and help teams make better decisions.
+- **Data:** `Risk-Ops-Dashboard/data/incidents_12000.csv`, 12,000 synthetic incidents (July 2023 to December 2024) with category, severity, SLA breached, time to resolve, root cause, region, channel, subsystem, repeat flag and financial impact in USD.
+- **Exploration:** `notebooks/01_EDA.ipynb`.
+- **Dashboard:** Streamlit and Plotly. Filters: date range, region, channel, severity, category, subsystem and SLA breached.
+- **Tabs:** Overview (trends, category and severity), Root Cause and SLA, Systems and Channels, Financial Impact (impact by category and subsystem, top 10 costly incidents), plus Auto Insights, plain-text takeaways.
+- **Report:** `reports/Operational Incident Analysis.pdf`, a short business case with findings and recommendations.
 
-Most of my projects focus on using analytics and automation to solve real business problems. Whether it’s predicting customer churn or creating AI systems that simplify workflows, I enjoy taking complex data and turning it into something practical that actually drives results.
+## Result
 
-My goal is to help companies use data and AI not just for analysis, but for integration — creating processes that run smoother, faster, and more intelligently.
+| KPI | Value |
+|---|---|
+| Total incidents | 12,000 |
+| SLA breach rate | 22.18% |
+| Average resolution time | 10.04 hours |
+| Financial impact | $49,242,368 |
+| Repeat incidents | 14.58% |
 
----
+Auto Insights in the live app: Funds Transfer is the highest volume category, Data Warehouse has the longest resolution time at about 10.2 hours, Configuration Issue is responsible for around 17.4% of SLA breaches, and Payments has the highest financial impact at about $6.55 million.
 
-### 📫 Let’s Connect
-[LinkedIn](www.linkedin.com/in/m-ebrahim-tahir-awan-660029231) · [Hugging Face](https://huggingface.co/Ebrahimtahirr) · [GitHub](https://github.com/Ebrahimtahirr)
+## Stack
+
+Python, Streamlit, Pandas, Plotly.
+
+## Screenshots
+
+<p><img src="assets/app-1.png" alt="Risk and Incident Analytics dashboard: filters, key metrics, incidents over time and breakdown by category and severity" width="100%"></p>
+
+<p><img src="assets/app-2.png" alt="Root Cause and SLA tab" width="100%"></p>
+
+<p><img src="assets/app-3.png" alt="Financial Impact tab" width="100%"></p>
+
+## How to run
+
+```bash
+pip install -r requirements.txt
+streamlit run Risk-Ops-Dashboard/app/app.py
+```
+
+Run it from the repo root, because the app reads `Risk-Ops-Dashboard/data/incidents_12000.csv`.
